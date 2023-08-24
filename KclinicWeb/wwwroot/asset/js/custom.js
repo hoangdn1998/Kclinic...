@@ -43,3 +43,17 @@
     new WOW({ mobile: false }).init();
 
 })(jQuery);
+$(document).ready(function () {
+    var icon = $("#contact-icon");
+    var iconPosition = icon.position().top;
+
+    $(window).scroll(function () {
+        var scrollPosition = $(this).scrollTop();
+
+        if (scrollPosition > iconPosition) {
+            icon.addClass("fixed-icon");
+        } else {
+            icon.removeClass("fixed-icon");
+        }
+    });
+});
