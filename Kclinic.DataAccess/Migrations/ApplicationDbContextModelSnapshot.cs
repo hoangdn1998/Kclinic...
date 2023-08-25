@@ -102,6 +102,7 @@ namespace Kclinic.DataAccess.Migrations
                     b.ToTable("CoverTypes");
                 });
 
+            
             modelBuilder.Entity("Kclinic.Models.OrderDetail", b =>
                 {
                     b.Property<int>("Id")

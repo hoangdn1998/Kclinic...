@@ -18,6 +18,6 @@ namespace Kclinic.DataAccess.Repository.IRepository
 		IOrderDetailRepository OrderDetail { get; }
 		IOrderHeaderRepository OrderHeader { get; }
 
-		void Save();
+        void Save();
     }
 }

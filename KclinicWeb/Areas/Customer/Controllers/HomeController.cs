@@ -27,7 +27,6 @@ public class HomeController : Controller
 		{
 			Blogs = _unitOfWork.Blog.GetAll(includeProperties: "Category,CoverType"),
 			Products = _unitOfWork.Product.GetAll()
-
 	    };
 
 		return View(viewModel);
