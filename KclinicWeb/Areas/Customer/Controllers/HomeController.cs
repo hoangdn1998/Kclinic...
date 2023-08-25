@@ -26,8 +26,9 @@ public class HomeController : Controller
 		var viewModel = new HomeVM
 		{
 			Blogs = _unitOfWork.Blog.GetAll(includeProperties: "Category,CoverType"),
-			Products = _unitOfWork.Product.GetAll()
-	    };
+			Products = _unitOfWork.Product.GetAll(),
+			Launchs = _unitOfWork.Launch.GetAll()
+		};
 
 		return View(viewModel);
 	}
@@ -53,6 +54,12 @@ public class HomeController : Controller
 
         return View(blogObj);
     }
+    public IActionResult DetailLaunch(int id)
+    {
+        Launch launchObj = _unitOfWork.Launch.GetFirstOrDefault(u => u.Id == id);
+        return View(launchObj);
+    }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     [Authorize]
