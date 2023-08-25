@@ -27,7 +27,8 @@ public class HomeController : Controller
 		{
 			Blogs = _unitOfWork.Blog.GetAll(includeProperties: "Category,CoverType"),
 			Products = _unitOfWork.Product.GetAll(),
-			Launchs = _unitOfWork.Launch.GetAll()
+			Launchs = _unitOfWork.Launch.GetAll(),
+            Functions = _unitOfWork.Function.GetAll()
 		};
 
 		return View(viewModel);
@@ -84,38 +85,17 @@ public class HomeController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    public IActionResult Function1()
+    public IActionResult Function(int id)
     {
-        return View();
+        var viewModel = new FunctionVM
+        {
+            Function = _unitOfWork.Function.GetFirstOrDefault(u => u.Id == id),
+            Functions = _unitOfWork.Function.GetAll()
+        };
+
+        return View(viewModel);
     }
-    public IActionResult Function2()
-    {
-        return View();
-    }
-    public IActionResult Function3()
-    {
-        return View();
-    }
-    public IActionResult Function4()
-    {
-        return View();
-    }
-    public IActionResult Function5()
-    {
-        return View();
-    }
-    public IActionResult Function6()
-    {
-        return View();
-    }
-    public IActionResult Function7()
-    {
-        return View();
-    }
-    public IActionResult Function8()
-    {
-        return View();
-    }
+
     public IActionResult Gallery()
     {
         return View();

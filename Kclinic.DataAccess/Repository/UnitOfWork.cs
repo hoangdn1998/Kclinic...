@@ -25,6 +25,7 @@ namespace Kclinic.DataAccess.Repository
 			OrderHeader = new OrderHeaderRepository(_db);
 			OrderDetail = new OrderDetailRepository(_db);
             Launch = new LaunchRepository(_db);
+            Function = new FunctionRepository(_db);
 
         }
         public ICategoryRepository Category { get; private set; }
@@ -37,8 +38,8 @@ namespace Kclinic.DataAccess.Repository
 		public IOrderHeaderRepository OrderHeader { get; private set; }
 		public IOrderDetailRepository OrderDetail { get; private set; }
 		public ILaunchRepository Launch { get; private set; }
-
-		public void Save()
+        public IFunctionRepository Function { get; private set; }
+        public void Save()
         {
             _db.SaveChanges();
         }

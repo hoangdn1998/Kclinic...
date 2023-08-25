@@ -18,7 +18,7 @@ namespace Kclinic.DataAccess.Repository.IRepository
 		IOrderDetailRepository OrderDetail { get; }
 		IOrderHeaderRepository OrderHeader { get; }
         ILaunchRepository Launch { get; }
-
+        IFunctionRepository Function { get; }
 
         void Save();
     }
