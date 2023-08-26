@@ -28,8 +28,10 @@ public class HomeController : Controller
 			Blogs = _unitOfWork.Blog.GetAll(includeProperties: "Category,CoverType"),
 			Products = _unitOfWork.Product.GetAll(),
 			Launchs = _unitOfWork.Launch.GetAll(),
-            Functions = _unitOfWork.Function.GetAll()
-		};
+            Abouts = _unitOfWork.About.GetAll(),
+            Functions = _unitOfWork.Function.GetAll(),
+            Features = _unitOfWork.Feature.GetAll(),
+        };
 
 		return View(viewModel);
 	}

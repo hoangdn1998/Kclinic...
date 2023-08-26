@@ -11,7 +11,9 @@ namespace Kclinic.Models.ViewModels
 		public IEnumerable<Kclinic.Models.Blog> Blogs { get; set; }
 		public IEnumerable<Kclinic.Models.Product> Products { get; set; }
 		public IEnumerable<Kclinic.Models.Launch> Launchs { get; set; }
-		public IEnumerable<Kclinic.Models.Function> Functions { get; set; }
-		public Trial Trial { get; set; }
+        public IEnumerable<Kclinic.Models.About> Abouts { get; set; }
+        public IEnumerable<Kclinic.Models.Function> Functions { get; set; }
+        public IEnumerable<Kclinic.Models.Feature> Features { get; set; }
+        public Trial Trial { get; set; }
     }
 }

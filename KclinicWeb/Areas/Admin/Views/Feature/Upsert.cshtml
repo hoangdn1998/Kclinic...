@@ -1,4 +1,4 @@
-﻿@model Kclinic.Models.ViewModels.BlogVM
+﻿@model Kclinic.Models.ViewModels.FeatureVM
 
 <style>
 	/* For other boilerplate styles, see: https://www.tiny.cloud/docs/tinymce/6/editor-content-css/ */
@@ -60,63 +60,36 @@
 <script src="https://cdn.tiny.cloud/1/ruzxaoky8x0gdv9d1x8glgzib4vcvu11kojsihyfk0hocn5t/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <div class="container">
 <form method="post" asp-action="Upsert" enctype="multipart/form-data">
-	<input asp-for="Blog.Id" hidden />
-	<input asp-for="Blog.ImageUrl" hidden />
+	<input asp-for="Feature.Id" hidden />
+	<input asp-for="Feature.ImageUrl" hidden />
 
 	<div class="row">
 		<div class="col-10">
 			<div class="border p-3 mt-4 row">
 		<div class="col-12 pb-2">
-			<h2 class="text-primary">@(Model.Blog.Id!=0?"Update": "Create")  Blog</h2>
+			<h2 class="text-primary">@(Model.Feature.Id!=0?"Update": "Create")  Feature</h2>
 			<hr />
 		</div>
 		@*<div asp-validation-summary="All"></div>*@
 		<div class="mb-3">
-			<label asp-for="Blog.Title"></label>
-			<input asp-for="Blog.Title" class="form-control" />
-			<span asp-validation-for="Blog.Title" class="text-danger"></span>
+			<label asp-for="Feature.Title"></label>
+			<input asp-for="Feature.Title" class="form-control" />
+			<span asp-validation-for="Feature.Title" class="text-danger"></span>
 		</div>
 		<div class="mb-3">
-			<label asp-for="Blog.Description"></label>
-			<textarea asp-for="Blog.Description" rows="3" class="form-control" id="open-source-plugins"></textarea>
-			<span asp-validation-for="Blog.Description" class="text-danger"></span>
-		</div>
-		<div class="mb-3 col-6">
-			<label asp-for="Blog.Author"></label>
-			<input asp-for="Blog.Author" class="form-control" />
-			<span asp-validation-for="Blog.Author" class="text-danger"></span>
-		</div>
-		<div class="mb-3">
-			<label asp-for="Blog.ImageUrl"></label>
+			<label asp-for="Feature.ImageUrl"></label>
 			<input type="file" id="uploadBox" name="file" class="form-control" />
 		</div>
-		<br	/>
-		<div class="mb-3 col-md-6">
-			<label asp-for="Blog.CategoryId"></label>
-			<select asp-for="Blog.CategoryId" asp-items="@Model.CategoryList" class="form-select">
-				<option disabled selected>--Select Category--</option>
-			</select>
-			<span asp-validation-for="Blog.CategoryId" class="text-danger"></span>
-		</div>
-
-		<div class="mb-3 col-md-6">
-			<label asp-for="Blog.CoverTypeId"></label>
-			<select asp-for="Blog.CoverTypeId" asp-items="@Model.CoverTypeList" class="form-select">
-				<option disabled selected>--Select CoverType--</option>
-			</select>
-			<span asp-validation-for="Blog.CoverTypeId" class="text-danger"></span>
-		</div>
-		@if(Model.Blog.ImageUrl!= null){
+		@if(Model.Feature.ImageUrl!= null){
 		<div class="col-2 pt-4">
 			<p>Ảnh cũ:</p>
-							<img src="@Model.Blog.ImageUrl"
+			<img src="@Model.Feature.ImageUrl"
 			width="200px" height="200px" style="border-radius:5px; border:1px solid #bbb9b9" />
 		</div>
 		}
 		<br /><br />
-		}
 		<div class="col-12">
-			@if (Model.Blog.Id != 0)
+			@if (Model.Feature.Id != 0)
 			{
 				<button type="submit" class="btn btn-primary" style="width:150px">Update</button>
 			}
@@ -124,14 +97,14 @@
 			{
 				<button type="submit" onclick="return ValidateInput()" class="btn btn-primary" style="width:150px">Create</button>
 			}
-			<a asp-controller="Blog" asp-action="Index" class="btn btn-secondary" style="width:150px">
+			<a asp-controller="Feature" asp-action="Index" class="btn btn-secondary" style="width:150px">
 				Back to List
 			</a>
 		</div>
 
 	</div>
 		</div>
-	
+		
 	</div>
 
 </form>
@@ -145,11 +118,11 @@
 	const isSmallScreen = window.matchMedia('(max-width: 1023.5px)').matches;
 
 	tinymce.init({
-			selector: 'textarea#open-source-plugins',
-			plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons',
+			selector: 'textarea#open-source-plugins-product',
+			plugins: 'preview importcss searchreplace autosave save directionality code visualblocks visualchars fullscreen template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons',
 			editimage_cors_hosts: ['picsum.photos'],
 			menubar: 'file edit view insert format tools table help',
-			toolbar: 'undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+			toolbar: 'undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | ltr rtl',
 			toolbar_sticky: false,
 			toolbar_sticky_offset: isSmallScreen ? 102 : 108,
 			autosave_ask_before_unload: true,
@@ -195,50 +168,15 @@
 			template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
 			template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
 			height: 600,
-			image_caption: true,
-			images_upload_url: '/UploadImage',
-			images_upload_handler: imageUploadHandler,
 			quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
 			noneditable_class: 'mceNonEditable',
 			toolbar_mode: 'sliding',
-			contextmenu: 'link image table',
 			skin: useDarkMode ? 'oxide-dark' : 'oxide',
 			content_css: useDarkMode ? 'dark' : 'default',
 			content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
 	});
 
-	// Custom function to handle image uploads
-	function imageUploadHandler(blobInfo, success, failure) {
-		// Call the server-side API to save the image on the server
-		var xhr, formData;
-		xhr = new XMLHttpRequest();
-		xhr.withCredentials = false;
-		xhr.open('POST', '/UploadImage'); // The URL where the image will be uploaded
-
-		// Set the response type to 'json'
-		xhr.responseType = 'json';
-
-		xhr.onload = function () {
-			if (xhr.status !== 200) {
-				failure('HTTP Error: ' + xhr.status);
-				return;
-			}
-			if (!xhr.response || typeof xhr.response.location !== 'string') {
-				failure('Invalid JSON: ' + JSON.stringify(xhr.response));
-				return;
-			}
-			success(xhr.response.location); // Image URL returned by the server
-		};
-		xhr.onerror = function () {
-			failure('Network error occurred while trying to upload the image.');
-		};
-
-		formData = new FormData();
-		formData.append('file', blobInfo.blob(), blobInfo.filename());
-		xhr.send(formData);
-	}
-
-	function ValidateInput(){
+	Feature ValidateInput(){
 		if(document.getElementById("uploadBox").value==""){
 			Swal.fire({
 			  icon: 'error',

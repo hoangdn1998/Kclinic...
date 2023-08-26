@@ -72,113 +72,67 @@
 <section id="about" class="">
     <div class="container">
         <div class="row">
+             @foreach (var about in Model.Abouts)
+            {
             <div class="col-md-6 col-sm-6">
                 <div class="about-info overrate">
-                    <h2 class="wow fadeInUp" data-wow-delay="0.3s">K.Clinic – Phần mềm quản lý phòng khám toàn diện và chuyên sâu.</h2>
+                    <h2 class="wow fadeInUp" data-wow-delay="0.3s">@about.Title</h2>
                     <div class="wow fadeInUp" data-wow-delay="0.4s">
                         <p>
-                            Hiểu được khối lượng công việc quá tải của y bác sĩ và nắm bắt xu hướng chuyển đổi số để
-                            mang ngành y tế lên một tầm cao mới, chuyên nghiệp và tối ưu hơn. KCL mang đến sản phẩm phần mềm <span style="color:#FF9966">K.Clinic</span> – Phần mềm quản lý phòng khám
-                            toàn diện và chuyên sâu. Sản phẩm được đội ngũ nhân sự hơn 10 năm kinh nghiệm cung cấp các giải pháp cho ngành y tế
-                            thực hiện theo quy chuẩn một cách hệ thống, đảm bảo chất lượng, đáp ứng yêu cầu nội dung và tiến độ của khách hàng.
+                            @about.Content
                         </p>
-                        <p>
-                            Phần mềm <span style="color:#FF9966">K.Clinic</span>
-                            được phát triển dành cho các phòng khám, phòng
-                            xét nghiệm, chẩn đoán hình ảnh. Giúp người sử dụng thuận tiện hơn
-                            trong quản lý dữ liệu nhập, xuất và báo cáo.
-                        </p>
-                    </div>
-                    <div class="seemore wow fadeInUp" data-wow-delay="0.5s">
-                        <a asp-action="Index" asp-controller="Gallery"> Xem thêm về quá trình triển khai của chúng tôi</a>
                     </div>
 
                 </div>
             </div>
             <div class="col-md-6 col-sm-6">
-                <img src="~/asset/images/BigImgDes.png" class="img-responsive" alt="">
+                <div class="about-info text-center overrate">
+                    <h2 class="wow fadeInUp" data-wow-delay="0.3s">Video Giới thiệu</h2>
+                    <iframe width="460" height="315" src="https://www.youtube.com@(about.Link)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
             </div>
+            }
+        </div>
+    </div>
+</section>
+<section id="specialfunction" class="" data-stellar-background-ratio="2.5">
+    <div class="row">
+        <div class="col-md-12 ml-auto mr-auto text-center row justify-content-center overrate">
+            <h2 class="wow fadeInUp" data-wow-delay="0.3s">Ưu điểm vượt trội của K.Clinic</h2>
+            <div class="caption-container">
+                <h4 id="caption" class="wow fadeInUp" data-wow-delay="0.3s"></h4>
+            </div>
+            <div class="container mt-3 mb-3">
+                @{
+                    int num = 1;
+                }
+                @foreach (var feature in Model.Features)
+                {
+                    <!-- Full-width images with number text -->
+                    <div class="mySlides text-center">
+                        <img src="@feature.ImageUrl" style="width:100%" />
+                    </div>
+                }
+                <!-- Next and previous buttons -->
+                <a class="bef" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="aft" onclick="plusSlides(1)">&#10095;</a>
 
+                <!-- Thumbnail images -->
+                <div class="row small-item">
+                    @foreach (var Feature in Model.Features)
+                    {
+                        <div class="column">
+                            <img class="demo cursor text-center" src="@Feature.ImageUrl" style="width:100%" onclick="currentSlide(@num)" alt="@Feature.Title">
+                        </div>
+                        num++;
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 
-<!-- UUDIEM -->
-<section id="adv">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 ml-auto mr-auto text-center row  justify-content-center overrate">
-                <h2 class="wow fadeInUp" data-wow-delay="0.3s">Ưu điểm vượt trội của K.Clinic</h2>
-                <h4 class="wow fadeInUp" data-wow-delay="0.3s">
-                    Tính năng kết nối với máy siêu âm để chuẩn đoán hình ảnh chính xác, được các bác sĩ tin dùng
-                </h4>
-                <div class="row text-center w-100">
-                    <div class="col-lg-12 py-5 d-flex text-center">
-                        <img src="~/asset/images/sa.png" style="width:100%; height:100%" class="img-container" alt="">
-                    </div>
-                </div>
-                <h4 class="wow fadeInUp" data-wow-delay="0.3s">
-                    Tính năng liên kết Zalo để gửi thông tin nhanh chóng và thuận tiện đến người dùng
-                </h4>
-                <div class="row text-center w-100">
-                    <div class="col-lg-12 py-5 d-flex text-center">
-                        <img src="~/asset/images/sendzalo.png" style="width:100%; height:100%" class="img-container" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <section id="advs" class="py-md-0 my-5" style="margin-top:3rem; margin-bottom:3rem;">
-        <div class="container my-5" style="margin-top:3rem; margin-bottom:3rem;">
-            <div class="row py-3 bg-gradient-primary">
-                <div class="col-md-12 ml-auto mr-auto overrate">
-                    <div class="row">
-                        <div class="col-12 col-lg-4 col-md-6 ">
-                            <div class="d-flex">
-                                <div class="ml-2">
-                                    <img class="img" width="35" height="35" title="icon 05" alt="icon 05" src="~/asset/images/ic-05.svg">
-                                </div>
-                                <div class="card-body py-0">
-                                    <h3 class="my-0 title h4 fw-bold">An toàn &amp; bảo mật </h3>
-                                    <p class="h5 mt-0 mr-lg-4">
-                                        Bảo mật hệ thống qua nhiều lớp phân quyền, kiểm soát mọi hoạt động của người dùng.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 col-md-6 ">
-                            <div class="d-flex">
-                                <div class="ml-2">
-                                    <img class="img" width="35" height="35" title="icon 06" alt="icon 06" src="~/asset/images/ic-06.svg">
-                                </div>
-                                <div class="card-body py-0">
-                                    <h3 class="my-0 title h4 fw-bold">Linh hoạt &amp; hiệu quả</h3>
-                                    <p class="h5 mt-0 mr-lg-4">
-                                        Linh hoạt tùy chỉnh, quy trình quản lý được thiết kế bám sát nghiệp vụ tại phòng khám.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-4 col-md-6 ">
-                            <div class="d-flex">
-                                <div class="ml-2">
-                                    <img class="img" width="35" height="35" title="icon 07" alt="icon 07" src="~/asset/images/ic-05.svg">
-                                </div>
-                                <div class="card-body py-0">
-                                    <h3 class="my-0 title h4 fw-bold">Trực quan &amp; dễ dùng</h3>
-                                    <p class="h5 mt-0 mr-lg-4">
-                                        Thông tin thể hiện tại 1 nơi, các tính năng được thiết kế tối giản phục vụ cho nhiều đối tượng.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</section>
 <!-- CHUCNANG -->
 <section id="func" class="">
     <div class="container mt-3 mb-3">
@@ -222,7 +176,7 @@
     <div class="container mt-3 mb-3">
         <div class="row">
 
-            <div class="col-md-12 col-sm-12">
+            <div class="col-md-12 col-sm-12 overrate">
                 <!-- SECTION TITLE -->
                 <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
                     <h2>Sản phẩm của chúng tôi</h2>
@@ -231,42 +185,41 @@
 
             <div class="clearfix"></div>
 
-            @{
-                double delay = 0.2;
-            }
+           <div class="slider" id="product-slider">
+                @{
+                    double delay = 0.2;
+                }
 
-            @foreach (var product in Model.Products)
-            {
-                <div class="col-md-4 col-sm-6">
-                    <div class="team-thumb wow fadeInUp" data-wow-delay="@delay.ToString("F1")s">
-                        <img src="@product.ImageUrl" class="img-responsive" style="width: 360px; height: 240px;" alt="">
+                @foreach (var product in Model.Products)
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <div class="team-thumb wow fadeInUp" data-wow-delay="@delay.ToString("F1")s">
+                            <img src="@product.ImageUrl" class="img-responsive" style="width: 360px; height: 240px;" alt="">
 
-                        <div class="team-info">
-                            <a asp-action="Details" asp-route-productId="@product.Id">
+                            <div class="team-info">
+                                <a asp-action="Details" asp-route-productId="@product.Id">
                                 <h3>@product.Name</h3>
-                            </a>
-                            <br \>
-                            @{
-                                // Convert the price to a string
-                                string priceString = product.Price.ToString("N0"); // N0 format adds thousands separators
-                            }
-                            <h3><span>@priceString</span><span> .VNĐ</span></h3>
-                            <div class="team-contact-info">
-                                <p><i class="fa fa-phone"></i> 0914911577</p>
-                                <p><i class="fa fa-envelope-o"></i> <a href="#">www.kclgroup.vn</a></p>
+                                </a>
+                                <br \>
+                                @{
+                                    // Convert the price to a string
+                                    string priceString = product.Price.ToString("N0"); // N0 format adds thousands separators
+                                }
+                                <h3><span>@priceString</span><span><span> .VNĐ</span></h3>
+                                <div class="team-contact-info">
+                                    <p><i class="fa fa-phone"></i> 0914911577</p>
+                                    <p><i class="fa fa-envelope-o"></i> <a href="#">www.kclgroup.vn</a></p>
+                                </div>
+                                <ul class="social-icon">
+                                    <li><a asp-action="Details" asp-route-productId="@product.Id" class="fa fa-cart-plus"></a></li>
+                                </ul>
                             </div>
-                            <ul class="social-icon">
-                                <li><a asp-action="Details" asp-route-productId="@product.Id" class="fa fa-cart-plus"></a></li>
-                            </ul>
-
                         </div>
-
                     </div>
-                </div>
-                delay += 0.2;
-            }
 
-
+                    delay += 0.2;
+                }
+            </div>
         </div>
     </div>
 </section>
@@ -277,17 +230,18 @@
     <div class="container mt-3 mb-3">
         <div class="row">
 
-            <div class="col-md-12 col-sm-12">
+            <div class="col-md-12 col-sm-12 overrate">
                 <!-- SECTION TITLE -->
                 <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
                     <h2>Tin tức mới nhất</h2>
                 </div>
             </div>
-
+            <div class="clearfix"></div>
+            <div class="slider" id="blog-slider">
             @foreach (var Blog in Model.Blogs)
             {
-                <div class="col-md-4 col-sm-6 mb-20" style="margin-bottom: 30px;">
-                    <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">
+                <div class="col-md-4 col-sm-6 ">
+                    <div class="news-thumb wow fadeInUp text-center" data-wow-delay="0.4s">
                         <a asp-action="DetailsBlog" asp-route-id="@Blog.Id">
                             <img src="@Blog.ImageUrl" class="img-responsive" style="width: 360px; height: 240px;" alt="">
                         </a>
@@ -319,7 +273,7 @@
                     </div>
                 </div>
             }
-
+            </div>
         </div>
     </div>
 </section>
@@ -328,13 +282,14 @@
     <div class="container mt-3 mb-3">
         <div class="row">
 
-            <div class="col-md-12 col-sm-12">
+            <div class="col-md-12 col-sm-12 overrate">
                 <!-- SECTION TITLE -->
-                <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
+                <div class="section-title wow fadeInUp text-center" data-wow-delay="0.1s">
                     <h2>Tiến trình triển khai các dự án</h2>
                 </div>
             </div>
-
+            <div class="clearfix"></div>
+            <div class="slider" id="launch-slider">
             @foreach (var Launch in Model.Launchs)
             {
                 <div class="col-md-4 col-sm-6 mb-20" style="margin-bottom: 30px;">
@@ -363,44 +318,11 @@
                     </div>
                 </div>
             }
-
-        </div>
-    </div>
-</section>
-<!-- Container for the image gallery -->
-<section id="launchs" class="" data-stellar-background-ratio="2.5">
-    <div class="container mt-3 mb-3">
-        @{
-            int num  = 1;
-        }
-        @foreach (var Launch in Model.Launchs)
-        {
-            <!-- Full-width images with number text -->
-            <div class="mySlides">
-                <img src="@Launch.ImageUrl" style="width:100%">
             </div>
-        }
-        <!-- Next and previous buttons -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-        <!-- Image text -->
-        <div class="caption-container">
-            <p id="caption"></p>
-        </div>
-
-        <!-- Thumbnail images -->
-        <div class="row">
-            @foreach (var Launch in Model.Launchs)
-            {
-                <div class="column">
-                    <img class="demo cursor" src="@Launch.ImageUrl" style="width:100%" onclick="currentSlide(@num)" alt="@Launch.Title">
-                </div>
-                num++;
-            }
         </div>
     </div>
 </section>
+
 
 <!-- MAKE AN APPOINTMENT -->
 <section id="appointment" data-stellar-background-ratio="3">
@@ -411,7 +333,7 @@
                 <img src="~/asset/images/trynow.png" class="img-responsive" alt="">
             </div>
 
-            <div class="col-md-6 col-sm-6">
+            <div class="col-md-6 col-sm-6 overrate">
                 <!-- CONTACT FORM HERE -->
                 <form id="appointment-form" role="form" method="post" asp-action="Create" asp-area="Customer" asp-controller="Trial">
 
@@ -456,8 +378,6 @@
         </div>
     </div>
 </section>
-
-
 <!-- GOOGLE MAP -->
 <section id="google-map">
     <!-- How to change your own map point
@@ -467,6 +387,30 @@
             4. Copy only URL and paste it within the src="" field below
     -->
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.2417671116687!2d108.20806877489419!3d16.052939139874308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219b9ce0625c7%3A0xbf63be46a3f58014!2zMTYwIEzDqiDEkMOsbmggTMO9LCBIw7JhIFRodeG6rW4gxJDDtG5nLCBI4bqjaSBDaMOidSwgxJDDoCBO4bq1bmcgNTUwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1691979484558!5m2!1svi!2s" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+<!-- CLIENTS -->
+<section id="clients" class="" data-stellar-background-ratio="2.5">
+    <div class="container mt-3 mb-3">
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12 overrate">
+                <!-- SECTION TITLE -->
+                <div class="section-title wow fadeInUp text-center" data-wow-delay="0.1s">
+                    <h2 style="padding-top:20px">Đối tác của chúng tôi</h2>
+                </div>
+            </div>
+
+            @foreach (var About in Model.Abouts)
+            {
+                <div class="col-md-12 col-sm-12 mb-20" style="margin-bottom: 30px;">
+                    <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">
+                        <img src="@About.ImageUrl" class="img-responsive" style="width: 100%; height: 100%;" alt="">
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
 </section>
 @section Scripts{
     <script>

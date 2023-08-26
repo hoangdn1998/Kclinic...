@@ -3,10 +3,9 @@
 <style>
 	/* For other boilerplate styles, see: https://www.tiny.cloud/docs/tinymce/6/editor-content-css/ */
 	/*
-	* For rendering images inserted using the image plugin.
-	* Includes image captions using the HTML5 figure element.
-	*/
-
+			* For rendering images inserted using the image plugin.
+			* Includes image captions using the HTML5 figure element.
+			*/
 	figure.image {
 		display: inline-block;
 		border: 1px solid gray;
@@ -30,12 +29,10 @@
 		margin: 6px 8px 6px 8px;
 		text-align: center;
 	}
-
 	/*
-	 Alignment using classes rather than inline styles
-	 check out the "formats" option
-	*/
-
+			 Alignment using classes rather than inline styles
+			 check out the "formats" option
+			*/
 	img.align-left {
 		float: left;
 	}
@@ -43,7 +40,6 @@
 	img.align-right {
 		float: right;
 	}
-
 	/* Basic styles for Table of Contents plugin (tableofcontents) */
 	.mce-toc {
 		border: 1px solid gray;
@@ -59,71 +55,71 @@
 </style>
 <script src="https://cdn.tiny.cloud/1/ruzxaoky8x0gdv9d1x8glgzib4vcvu11kojsihyfk0hocn5t/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <div class="container">
-<form method="post" asp-action="Upsert" enctype="multipart/form-data">
-	<input asp-for="Launch.Id" hidden />
-	<input asp-for="Launch.ImageUrl" hidden />
+	<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+		<input asp-for="Launch.Id" hidden />
+		<input asp-for="Launch.ImageUrl" hidden />
 
-	<div class="row">
-		<div class="col-10">
-			<div class="border p-3 mt-4 row">
-		<div class="col-12 pb-2">
-			<h2 class="text-primary">@(Model.Launch.Id!=0?"Update": "Create")  Launch</h2>
-			<hr />
-		</div>
-		@*<div asp-validation-summary="All"></div>*@
-		<div class="mb-3">
-			<label asp-for="Launch.Title"></label>
-			<input asp-for="Launch.Title" class="form-control" />
-			<span asp-validation-for="Launch.Title" class="text-danger"></span>
-		</div>
-		<div class="mb-3">
-			<label asp-for="Launch.Description"></label>
-			<textarea asp-for="Launch.Description" rows="3" class="form-control" id="open-source-plugins"></textarea>
-			<span asp-validation-for="Launch.Description" class="text-danger"></span>
-		</div>
-		<div class="mb-3">
-			<label asp-for="Launch.ImageUrl"></label>
-			<input type="file" id="uploadBox" name="file" class="form-control" />
-		</div>
-		@if(Model.Launch.ImageUrl!= null){
-		<div class="col-2 pt-4">
-			<p>Ảnh cũ:</p>
-			<img src="@Model.Launch.ImageUrl"
-			width="200px" height="200px" style="border-radius:5px; border:1px solid #bbb9b9" />
-		</div>
+		<div class="row">
+			<div class="col-10">
+				<div class="border p-3 mt-4 row">
+					<div class="col-12 pb-2">
+						<h2 class="text-primary">@(Model.Launch.Id != 0 ? "Update" : "Create")  Launch</h2>
+						<hr />
+					</div>
+					@*<div asp-validation-summary="All"></div>*@
+					<div class="mb-3">
+						<label asp-for="Launch.Title"></label>
+						<input asp-for="Launch.Title" class="form-control" />
+						<span asp-validation-for="Launch.Title" class="text-danger"></span>
+					</div>
+					<div class="mb-3">
+						<label asp-for="Launch.Description"></label>
+						<textarea asp-for="Launch.Description" rows="3" class="form-control" id="open-source-plugins-launch"></textarea>
+						<span asp-validation-for="Launch.Description" class="text-danger"></span>
+					</div>
+					<div class="mb-3">
+						<label asp-for="Launch.ImageUrl"></label>
+						<input type="file" id="uploadBox" name="file" class="form-control" />
+					</div>
+					@if (Model.Launch.ImageUrl != null)
+					{
+						<div class="col-2 pt-4">
+							<p>Ảnh cũ:</p>
+							<img src="@Model.Launch.ImageUrl"
+								  style="border-radius:5px; border:1px solid #bbb9b9;width:200px;height:200px" />
+						</div>
 					}
-		<br /><br />
-		<div class="col-12">
-			@if (Model.Launch.Id != 0)
-			{
-				<button type="submit" class="btn btn-primary" style="width:150px">Update</button>
-			}
-			else
-			{
-				<button type="submit" onclick="return ValidateInput()" class="btn btn-primary" style="width:150px">Create</button>
-			}
-			<a asp-controller="Launch" asp-action="Index" class="btn btn-secondary" style="width:150px">
-				Back to List
-			</a>
+					<br /><br />
+					<div class="col-12">
+						@if (Model.Launch.Id != 0)
+						{
+							<button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+						}
+						else
+						{
+							<button type="submit" onclick="return ValidateInput()" class="btn btn-primary" style="width:150px">Create</button>
+						}
+						<a asp-controller="Launch" asp-action="Index" class="btn btn-secondary" style="width:150px">
+							Back to List
+						</a>
+					</div>
+
+				</div>
+			</div>
+
 		</div>
 
-	</div>
-		</div>
-		
-	</div>
-
-</form>
+	</form>
 </div>
 @section Scripts{
 	@{
-	<partial name="_ValidationScriptsPartial" />
+		<partial name="_ValidationScriptsPartial" />
 	}
-<script>
-	const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-	const isSmallScreen = window.matchMedia('(max-width: 1023.5px)').matches;
-
-	tinymce.init({
-			selector: 'textarea#open-source-plugins',
+	<script>
+		const useDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+		const isSmallScreen = window.matchMedia('(max-width: 1023.5px)').matches;
+		tinymce.init({
+			selector: 'textarea#open-source-plugins-launch',
 			plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons',
 			editimage_cors_hosts: ['picsum.photos'],
 			menubar: 'file edit view insert format tools table help',
@@ -154,12 +150,10 @@
 				if (meta.filetype === 'file') {
 					callback('https://www.google.com/logos/google.jpg', { text: 'My text' });
 				}
-
 				/* Provide image and alt text for the image dialog */
 				if (meta.filetype === 'image') {
 					callback('https://www.google.com/logos/google.jpg', { alt: 'My alt text' });
 				}
-
 				/* Provide alternative source and posted for the media dialog */
 				if (meta.filetype === 'media') {
 					callback('movie.mp4', { source2: 'alt.ogg', poster: 'https://www.google.com/logos/google.jpg' });
@@ -174,7 +168,7 @@
 			template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
 			height: 600,
 			image_caption: true,
-			images_upload_url: '/UploadImage',
+			images_upload_url: '/UploadImageLaunch',
 			images_upload_handler: imageUploadHandler,
 			quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
 			noneditable_class: 'mceNonEditable',
@@ -183,49 +177,44 @@
 			skin: useDarkMode ? 'oxide-dark' : 'oxide',
 			content_css: useDarkMode ? 'dark' : 'default',
 			content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
-	});
-
-	// Custom function to handle image uploads
-	function imageUploadHandler(blobInfo, success, failure) {
-		// Call the server-side API to save the image on the server
-		var xhr, formData;
-		xhr = new XMLHttpRequest();
-		xhr.withCredentials = false;
-		xhr.open('POST', '/UploadImage'); // The URL where the image will be uploaded
-
-		// Set the response type to 'json'
-		xhr.responseType = 'json';
-
-		xhr.onload = function () {
-			if (xhr.status !== 200) {
-				failure('HTTP Error: ' + xhr.status);
-				return;
-			}
-			if (!xhr.response || typeof xhr.response.location !== 'string') {
-				failure('Invalid JSON: ' + JSON.stringify(xhr.response));
-				return;
-			}
-			success(xhr.response.location); // Image URL returned by the server
-		};
-		xhr.onerror = function () {
-			failure('Network error occurred while trying to upload the image.');
-		};
-
-		formData = new FormData();
-		formData.append('file', blobInfo.blob(), blobInfo.filename());
-		xhr.send(formData);
-	}
-
-	function ValidateInput(){
-		if(document.getElementById("uploadBox").value==""){
-			Swal.fire({
-			  icon: 'error',
-			  title: 'Oops...',
-			  text: 'Please upload an Image!',
-			});
-			return false;
+		});
+		// Custom function to handle image uploads
+		function imageUploadHandler(blobInfo, success, failure) {
+			// Call the server-side API to save the image on the server
+			var xhr, formData;
+			xhr = new XMLHttpRequest();
+			xhr.withCredentials = false;
+			xhr.open('POST', '/UploadImageLaunch'); // The URL where the image will be uploaded
+			// Set the response type to 'json'
+			xhr.responseType = 'json';
+			xhr.onload = function () {
+				if (xhr.status !== 200) {
+					failure('HTTP Error: ' + xhr.status);
+					return;
+				}
+				if (!xhr.response || typeof xhr.response.location !== 'string') {
+					failure('Invalid JSON: ' + JSON.stringify(xhr.response));
+					return;
+				}
+				success(xhr.response.location); // Image URL returned by the server
+			};
+			xhr.onerror = function () {
+				failure('Network error occurred while trying to upload the image.');
+			};
+			formData = new FormData();
+			formData.append('file', blobInfo.blob(), blobInfo.filename());
+			xhr.send(formData);
 		}
-		return true;
-	}
-</script>
+		function ValidateInput() {
+			if (document.getElementById("uploadBox").value == "") {
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Please upload an Image!',
+				});
+				return false;
+			}
+			return true;
+		}
+	</script>
 }

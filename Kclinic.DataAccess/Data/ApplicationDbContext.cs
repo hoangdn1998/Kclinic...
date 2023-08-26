@@ -21,5 +21,7 @@ public class ApplicationDbContext : IdentityDbContext
 	public DbSet<OrderHeader> OrderHeaders { get; set; }
 	public DbSet<OrderDetail> OrderDetail { get; set; }
     public DbSet<Launch> Launchs { get; set; }
+    public DbSet<About> Abouts { get; set; }
     public DbSet<Function> Functions { get; set; }
+    public DbSet<Feature> Features { get; set; }
 }
