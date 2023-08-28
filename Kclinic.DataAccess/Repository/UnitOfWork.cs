@@ -28,6 +28,7 @@ namespace Kclinic.DataAccess.Repository
             About = new AboutRepository(_db);
             Function = new FunctionRepository(_db);
             Feature = new FeatureRepository(_db);
+            Partner = new PartnerRepository(_db);
 
         }
         public ICategoryRepository Category { get; private set; }
@@ -43,6 +44,7 @@ namespace Kclinic.DataAccess.Repository
         public IFunctionRepository Function { get; private set; }
         public IFeatureRepository Feature { get; private set; }
         public IAboutRepository About { get; private set; }
+        public IPartnerRepository Partner { get; private set; }
         public void Save()
         {
             _db.SaveChanges();

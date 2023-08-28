@@ -21,6 +21,7 @@ namespace Kclinic.DataAccess.Repository.IRepository
         IAboutRepository About { get; }
         IFunctionRepository Function { get; }
         IFeatureRepository Feature { get; }
+        IPartnerRepository Partner { get; }
         void Save();
     }
 }

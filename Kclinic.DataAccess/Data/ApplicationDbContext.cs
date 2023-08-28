@@ -24,4 +24,5 @@ public class ApplicationDbContext : IdentityDbContext
     public DbSet<About> Abouts { get; set; }
     public DbSet<Function> Functions { get; set; }
     public DbSet<Feature> Features { get; set; }
+    public DbSet<Partner> Partners { get; set; }
 }

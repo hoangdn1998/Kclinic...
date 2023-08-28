@@ -25,6 +25,7 @@
     <Folder Include="wwwroot\images\functions\" />
     <Folder Include="wwwroot\images\features\" />
     <Folder Include="wwwroot\images\abouts\" />
+    <Folder Include="wwwroot\images\partners\" />
     <Folder Include="wwwroot\images\products\" />
   </ItemGroup>
   <ItemGroup>

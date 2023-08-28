@@ -31,9 +31,9 @@ public class HomeController : Controller
             Abouts = _unitOfWork.About.GetAll(),
             Functions = _unitOfWork.Function.GetAll(),
             Features = _unitOfWork.Feature.GetAll(),
+            Partners = _unitOfWork.Partner.GetAll()
         };
-
-		return View(viewModel);
+        return View(viewModel);
 	}
 
     public IActionResult Details(int productId)

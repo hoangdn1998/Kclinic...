@@ -160,7 +160,6 @@ text-align: center;
 
 .border-top {
 border-top: 1px solid #f2f2f2;
-margin-top: 4em;
 padding-top: 2.5em;
 }
 
@@ -247,11 +246,11 @@ margin-right: 10px;
 #adv {
 }
 
-#about, #team, #news, #func, #adv
-#news-detail {
+#about, #team, #news, #func, #specialfunction, #adv
+#news-detail, #launchs,#partners {
     position: relative;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 50px;
+    padding-bottom: 30px;
 }
 
 #news, #service, #team, #func, #adv {
@@ -610,7 +609,7 @@ height: 650px;
 }
 
 .slider .item-first {
-background-image: url(../images/sl1.png);
+background-image: url(../images/slider1.png);
 max-width: 100%;
 max-height:100%;
 }
@@ -632,7 +631,6 @@ background-image: url(../images/slider3.jpg);
 -----------------------------------------*/
 
 #about {
-padding-top: 150px;
 padding-bottom: 50px;
 }
 
@@ -658,6 +656,9 @@ margin: 0;
 }
 
 
+#about p{
+    font-size:30px !important;
+}
 /*---------------------------------------
     UUDIEM              
 -----------------------------------------*/
@@ -1097,7 +1098,6 @@ color: #ffffff;
 
 footer {
 padding-top: 80px;
-padding-bottom: 40px;
 }
 
 footer h4 {
@@ -1189,7 +1189,7 @@ display: block;
 }
 
 .angle-up-btn a {
-background: #ffffff;
+background: #4CAF50;
 border: 1px solid #f2f2f2;
 border-radius: 3px;
 font-size: 20px;
@@ -1246,46 +1246,8 @@ color: #ffffff;
 /*---------------------------------------
     Contact STYLES              
 -----------------------------------------*/
-.contact-icons {
-    display: flex; 
-    justify-content: center; 
-    margin-top: 20px; 
-}
 
-.contact-icon {
-    margin: 0 10px;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999;
-}
-.contact-icon img{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #007bff; 
-    padding: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
-}
 
-.contact-icon a {
-    text-decoration: none;
-    color: white;
-}
-.fixed-icon {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-}
-.contact-icon:nth-child(1) {
-    bottom: 20px;
-    right: 20px;
-}
-
-.contact-icon:nth-child(2) {
-    bottom: 100px;
-    right: 20px;
-}
 /*---------------------------------------
     RESPONSIVE STYLES              
 -----------------------------------------*/
@@ -1326,7 +1288,7 @@ a.d-block {
    section
 -----------------------------------------*/
 .specialfunction{
-
+    
 }
 /*---------------------------------------
    container-feature   
@@ -1426,3 +1388,159 @@ a.d-block {
 /*---------------------------------------
     smoothScroll             
 -----------------------------------------*/
+@media screen and (max-width: 768px) { 
+    #home {
+        background-size: cover; 
+    }
+}
+/*---------------------------------------
+    Zalo            
+-----------------------------------------*/
+@keyframes zoom {
+    0% {
+        transform: scale(.5);
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(1)
+    }
+}
+
+@keyframes lucidgenzalo {
+    0% to {
+        transform: rotate(-25deg)
+    }
+
+    50% {
+        transform: rotate(25deg)
+    }
+}
+
+.jscroll-to-top {
+    bottom: 100px
+}
+
+.fcta-zalo-ben-trong-nut svg path {
+    fill: #fff
+}
+
+.fcta-zalo-vi-tri-nut {
+    position: fixed;
+    bottom: 24px;
+    right: 20px;
+    z-index: 999
+}
+
+.fcta-zalo-nen-nut, div.fcta-zalo-mess {
+    box-shadow: 0 1px 6px rgba(0,0,0,.06),0 2px 32px rgba(0,0,0,.16)
+}
+
+.fcta-zalo-nen-nut {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    color: #fff;
+    background: #0068ff;
+    border-radius: 50%;
+    position: relative
+}
+
+    .fcta-zalo-nen-nut::after, .fcta-zalo-nen-nut::before {
+        content: "";
+        position: absolute;
+        border: 1px solid #0068ff;
+        background: #0068ff80;
+        z-index: -1;
+        left: -20px;
+        right: -20px;
+        top: -20px;
+        bottom: -20px;
+        border-radius: 50%;
+        animation: zoom 1.9s linear infinite
+    }
+
+    .fcta-zalo-nen-nut::after {
+        animation-delay: .4s
+    }
+
+.fcta-zalo-ben-trong-nut, .fcta-zalo-ben-trong-nut i {
+    transition: all 1s
+}
+
+.fcta-zalo-ben-trong-nut {
+    position: absolute;
+    text-align: center;
+    width: 60%;
+    height: 60%;
+    left: 10px;
+    bottom: 25px;
+    line-height: 70px;
+    font-size: 25px;
+    opacity: 1
+}
+
+    .fcta-zalo-ben-trong-nut i {
+        animation: lucidgenzalo 1s linear infinite
+    }
+
+.fcta-zalo-nen-nut:hover .fcta-zalo-ben-trong-nut, .fcta-zalo-text {
+    opacity: 0
+}
+
+.fcta-zalo-nen-nut:hover i {
+    transform: scale(.5);
+    transition: all .5s ease-in
+}
+
+.fcta-zalo-text a {
+    text-decoration: none;
+    color: #fff
+}
+
+.fcta-zalo-text {
+    position: absolute;
+    top: 6px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    transform: scaleX(-1);
+    transition: all .5s;
+    line-height: 1.5
+}
+
+.fcta-zalo-nen-nut:hover .fcta-zalo-text {
+    transform: scaleX(1);
+    opacity: 1
+}
+
+div.fcta-zalo-mess {
+    position: fixed;
+    bottom: 29px;
+    right: 58px;
+    z-index: 99;
+    background: #fff;
+    padding: 7px 25px 7px 15px;
+    color: #0068ff;
+    border-radius: 50px 0 0 50px;
+    font-weight: 700;
+    font-size: 15px
+}
+
+.fcta-zalo-mess span {
+    color: #0068ff !important
+}
+
+span#fcta-zalo-tracking {
+    font-family: Roboto;
+    line-height: 1.5
+}
+
+.fcta-zalo-text {
+    font-family: Roboto
+}
