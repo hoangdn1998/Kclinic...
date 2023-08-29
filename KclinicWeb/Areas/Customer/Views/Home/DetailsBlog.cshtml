@@ -111,7 +111,13 @@
                             <h4>Tags</h4>
                             <ul>
                                 @foreach(var Type in Model.CoverTypes){
-                                   <li><a href="#">@Type.Name</a></li>
+                                    if (Type.Name.Equals(Model.BlogCount.Blog.CoverType.Name))
+                                    {
+                                        <li ><a class="specialtype" href="#">@Type.Name</a></li>
+                                    }else{
+                                        <li><a href="#">@Type.Name</a></li>
+                                    }
+                                   
                                 }
                             </ul>
                         </div>

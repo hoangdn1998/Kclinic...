@@ -1574,11 +1574,16 @@ span#fcta-zalo-tracking {
     margin-bottom: 10px; 
     padding: 20px; 
 }
-
+/*-----
+    cart
+    ----*/
 .cart-item-count {
     font-size: 0.8em;
     margin-left: -5px;
     vertical-align: text-bottom;
     margin-left: 5px;
     color: red;
+}
+.specialtype{
+    background:green !important;
 }
